@@ -28,7 +28,7 @@ public class UserService {
         try {
             Map<String, String> map = new HashMap<>();
             userRepository.save(user);
-            map.put("result", "hello world");
+            map.put("result", "가입 성공");
             return map;
         } catch (Exception e) {
             throw new Exception(e);
