@@ -5,10 +5,17 @@ type board {
     content: String
 }
 
+type user {
+    idx: Int
+    username: String
+    password: String
+}
+
 type Query {
     getBoardData: [board]
     findBoard(idx : Int!): board
     createBoard(username : String!, title:String!, content:String!) : String
     updateBoard(idx: Int!, username: String!, title: String!, content: String!): String
     deleteBoard(idx: Int!): String
+    SignUpByGraphQL(username : String!, password:String!) : String
 }
