@@ -33,6 +33,5 @@ public class User extends BaseEntity{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String idx;
     private String username;
-    private String user_id;
     private String password;
 }

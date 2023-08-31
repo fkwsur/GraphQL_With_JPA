@@ -1,4 +1,5 @@
 package gradle.project.app.service;
+
 import lombok.RequiredArgsConstructor;
 import gradle.project.app.model.Board;
 import gradle.project.app.repository.*;
