@@ -21,7 +21,7 @@ public class BoardController {
     private final BoardService boardService;
 
     @QueryMapping
-    public List<Board> getBoardData(@Argument Board board) throws Exception{
+    public List<Board> getBoardData() throws Exception{
         try {
             return boardService.getBoardData();
         } catch (Exception e) {
