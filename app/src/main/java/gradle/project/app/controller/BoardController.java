@@ -45,7 +45,7 @@ public class BoardController {
             String rows = boardService.createBoard(username,title,content);
             return rows;
         } catch (Exception e) {
-            throw new Exception(e);
+            return e.toString();
         }
     }
 
@@ -55,7 +55,7 @@ public class BoardController {
             String rows = boardService.updateBoard(idx,username,title,content);
             return rows;
         } catch (Exception e) {
-            throw new Exception(e);
+            return e.toString();
         }
 
     }
@@ -66,7 +66,7 @@ public class BoardController {
             boardService.deleteBoard(idx);
             return "success";
         } catch (Exception e) {
-            throw new Exception(e);
+            return e.toString();
         }
 
     }

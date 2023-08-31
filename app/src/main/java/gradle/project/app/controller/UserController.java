@@ -31,7 +31,12 @@ public class UserController {
     @PostMapping("/signup")
     public ResponseEntity<Object> SignUpByRestAPI(@RequestBody User user) throws Exception {
         try {
-            Map<String, String> map= userService.createBoard(user);
+            Map<String, String> map = new HashMap<>();
+            Boolean rows = userService.createBoard(user);
+            if(rows == false) {
+                map.put("result", "failed");
+            }
+            map.put("result", "success");
             return new ResponseEntity<>(map, HttpStatus.OK);
         } catch (Exception e) {
             Map<String, String> map = new HashMap<>();
@@ -42,18 +47,19 @@ public class UserController {
 
     // GraphQL 방식
     @QueryMapping
-    public Map<String, String> SignUpByGraphQL(@Argument String username,@Argument String password) throws Exception{
+    public String SignUpByGraphQL(@Argument String username,@Argument String password) throws Exception{
         try {
             User user = User.builder()
             .username(username)
             .password(password)
             .build();
-            Map<String, String> map= userService.createBoard(user);
-            return map;
+            Boolean rows =  userService.createBoard(user);
+            if(rows == false) {
+                return "failed";
+            }
+            return "success";
         } catch (Exception e) {
-            Map<String, String> map = new HashMap<>();
-            map.put("error", e.toString());
-            return map;
+            return e.toString();
         }
     }
 

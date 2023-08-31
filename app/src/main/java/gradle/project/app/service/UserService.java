@@ -24,12 +24,10 @@ public class UserService {
 
 
     @Transactional
-    public Map<String, String> createBoard(User user) throws Exception {
+    public Boolean createBoard(User user) throws Exception {
         try {
-            Map<String, String> map = new HashMap<>();
             userRepository.save(user);
-            map.put("result", "가입 성공");
-            return map;
+            return true;
         } catch (Exception e) {
             throw new Exception(e);
         }
